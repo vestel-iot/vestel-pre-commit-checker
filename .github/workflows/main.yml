@@ -21,6 +21,7 @@ jobs:
         # Set variables
         BASE_BRANCH=${{ github.event.pull_request.base.ref }}
         msg_regex='(^.*(TASK:|BUGFIX:).*$\n^.*(SOLUTION:).*$)'
+        echo $BASE_BRANCH
         
         # Initialize invalidCommit as false, will be set to true by any invalid commits
         invalidCommit=false
