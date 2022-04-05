@@ -27,16 +27,16 @@ jobs:
         invalidCommit=false
         # Find current branch name
         CURRENT_BRANCH=$(git branch | grep ^\* | cut -d "*" -f 2 | cut -d " " -f 2)
-        #echo "Current branch is:" $CURRENT_BRANCH
+        echo "Current branch is:" $CURRENT_BRANCH
         # Find hash of commit most common ancestor, e.g. where branch began
         BRANCH_MERGE_BASE=$(git merge-base ${BASE_BRANCH} ${CURRENT_BRANCH})
-        #echo "Branch merge base hash is:" $BRANCH_MERGE_BASE
+        echo "Branch merge base hash is:" $BRANCH_MERGE_BASE
         # Find all commits since common ancestor
         BRANCH_COMMITS=$(git rev-list ${BRANCH_MERGE_BASE}..HEAD)
-        #echo $BRANCH_COMMITS
+        echo $BRANCH_COMMITS
         # Check every commit message since ancestor for regex match
         for commit in $BRANCH_COMMITS; do
-            if git log --max-count=1 --format=%B $commit | tr '[a-z]' '[A-Z]' | grep -iqE "$msg_regex"; then
+            if git log --max-count=2 --format=%B $commit | tr '[a-z]' '[A-Z]' | grep -iqE "$msg_regex"; then
                 : #If commit matches regex, commit is valid, do nothing
             else
                 # If commit doesn't match regex, commit isn't valid, print commit info
