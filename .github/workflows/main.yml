@@ -36,7 +36,7 @@ jobs:
         echo $BRANCH_COMMITS
         # Check every commit message since ancestor for regex match
         for commit in $BRANCH_COMMITS; do
-            if git log --max-count=2 --format=%B $commit | tr '[a-z]' '[A-Z]' | grep -iqE "$msg_regex"; then
+            if git log --max-count=1 --format=%B $commit | tr '[a-z]' '[A-Z]' | grep -iqE "$msg_regex"; then
                 : #If commit matches regex, commit is valid, do nothing
             else
                 # If commit doesn't match regex, commit isn't valid, print commit info
