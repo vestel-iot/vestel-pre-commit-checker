@@ -26,7 +26,7 @@ jobs:
         
         # Set variables
         BASE_BRANCH=${{ github.event.pull_request.base.ref }}
-        msg_regex='(^(?i).*(TASK|BUGFIX).*:$\n^.*(SOLUTION:).*$)'
+        msg_regex='(^.*(TASK|BUGFIX).*:$\n^.*(SOLUTION:).*$)'
         #msg_regex='(^.*(TASK:|BUGFIX:).*$\n^.*(SOLUTION:).*$)'
         echo $BASE_BRANCH
         
