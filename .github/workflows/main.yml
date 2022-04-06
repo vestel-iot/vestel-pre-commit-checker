@@ -15,7 +15,9 @@ jobs:
         
         
     - name: Pcregrep Init
-      run: sudo apt-get install -y pcregrep
+      run: |
+         sudo apt-get update
+         sudo apt-get install -y pcregrep
     
     - name: Commit validation
       run: |
