@@ -15,7 +15,7 @@ jobs:
 
     - name: Commit validation
       env:
-        BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
-        HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
+        BASE_BRANCH: '${{ github.event.pull_request.base.ref }}'
+        HEAD_BRANCH: '${{ github.event.pull_request.head.ref }}'
       run: ./commit-msg
       shell: bash
