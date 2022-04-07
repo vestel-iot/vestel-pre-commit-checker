@@ -1,7 +1,7 @@
-git checkout -q ${{ github.event.pull_request.head.ref }}
+
         
         # Set variables
-        BASE_BRANCH=${{ github.event.pull_request.base.ref }}
+        BASE_BRANCH=$1
         msg_regex='(^.*(TASK:|BUGFIX:).*$\n^.*(SOLUTION:).*$)'
         echo $BASE_BRANCH
         

@@ -14,5 +14,5 @@ jobs:
         ref: '${{ github.event.pull_request.base.ref }}'
 
     - name: Commit validation
-      run: ./commit-msg
+      run: git checkout -q ${{ github.event.pull_request.head.ref }} | ./commit-msg ${{ github.event.pull_request.base.ref }}
       shell: bash
