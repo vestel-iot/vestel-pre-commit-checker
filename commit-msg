@@ -1,7 +1,6 @@
 
         
         # Set variables
-        BASE_BRANCH=$1
         msg_regex='(^.*(TASK:|BUGFIX:).*$\n^.*(SOLUTION:).*$)'
         echo $BASE_BRANCH
         
