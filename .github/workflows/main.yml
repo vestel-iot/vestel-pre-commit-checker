@@ -17,5 +17,5 @@ jobs:
       env:
         BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
         HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
-      run: git checkout -q $HEAD_BRANCH | ./commit-msg
+      run: ./commit-msg
       shell: bash

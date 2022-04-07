@@ -3,7 +3,8 @@
         # Set variables
         msg_regex='(^.*(TASK:|BUGFIX:).*$\n^.*(SOLUTION:).*$)'
         echo $BASE_BRANCH
-        
+        echo $HEAD_BRANCH
+        git checkout -q $HEAD_BRANCH
         # Initialize invalidCommit as false, will be set to true by any invalid commits
         invalidCommit=false
         # Find current branch name
