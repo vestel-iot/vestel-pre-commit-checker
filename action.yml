@@ -1,0 +1,19 @@
+name: 'Vestel Commit Checker'
+description: 'Commit Checker For Vestel'
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: '${{ github.event.pull_request.base.ref }}'
+    - name: Pcregrep Init
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y pcregrep
+    - name: Commit validation
+      env:
+        BASE_BRANCH: '${{ github.event.pull_request.base.ref }}'
+        HEAD_BRANCH: '${{ github.event.pull_request.head.ref }}'
+      run: ./commit-msg
+      shell: bash
