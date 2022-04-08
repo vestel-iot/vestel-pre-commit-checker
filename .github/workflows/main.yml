@@ -1,7 +1,7 @@
 name: Commit Checker
 
 # Run on push to any branch
-on: [pull_request,push]
+on: [pull_request]
 
 jobs:
   Commit_Checker:
