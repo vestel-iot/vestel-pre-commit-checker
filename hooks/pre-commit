@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+# Branch name validation before push. 
+# Valid branch names are: 
+# -> {feature, release}/{letters, nummbers, '_', '-', '.'}
+# -> pr/TALISMANMOBILE-{numbers}
+# -> {bugfix, development, master}  
+jira_name="TALISMANMOBILE"
+local_branch="$(git rev-parse --abbrev-ref HEAD)"
+valid_chars="^((pr|task)\/$jira_name-[0-9]+$|(feature\/|release\/)[a-zA-Z0-9_.-]+$|\b(dev|bugfix|development|master)\b)"
+message="INVALID BRANCH NAME! SHOULD START WITH {task/, feature/, release/ , pr/$jira_name-} OR BE ONE OF {bugfix, development, dev, master}"
+
+if [[ ! $local_branch =~ $valid_chars ]]
+then
+    echo "$message"
+    exit 1
+fi
+
+exit 0
